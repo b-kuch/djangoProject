@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Airways{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'airways/style.css' %}">
+</head>
+
+<body>
+<nav>
+    {% block sidebar %}
+        <ul class="navbar-nav">
+            <li>
+                <header>
+                    <a class="nav-item" href="{% url 'airways:index' %}">
+                        <img src="{% static 'airways/logo.png' %}" alt="">
+                        Flyways
+                    </a>
+                </header>
+            </li>
+            <li><a class="nav-item" href="{% url 'airways:Read' 'flight' %}">Flights</a></li>
+            <li><a class="nav-item" href="{% url 'airways:Read' 'customer' %}">Customers</a></li>
+            <li><a class="nav-item" href="{% url 'airways:Read' 'ticket' %}">Tickets</a></li>
+            <li><a class="nav-item" href="{% url 'airways:Read' 'pilot' %}">Pilots</a></li>
+            <li><a class="nav-item" href="{% url 'airways:Read' 'plane' %}">Planes</a></li>
+            <li><a class="nav-item" href="{% url 'airways:Read' 'airport' %}">Airports</a></li>
+            <li><a class="nav-item" href="{% url 'airways:Read' 'country' %}">Countries</a></li>
+            <li><a class="nav-item" href="{% url 'airways:Read' 'city' %}">Cities</a></li>
+        </ul>
+    {% endblock %}
+</nav>
+<main>
+    <section>
+        {% block content %}{% endblock %}
+    </section>
+</main>
+<footer>{% block footer %}FOOTER{% endblock %}</footer>
+</body>
+
+</html>

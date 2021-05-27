@@ -1,0 +1,28 @@
+{% extends "airways/base.html" %}
+{% load static %}
+
+{% block content %}
+    <a class="create-button" href="{% url 'airways:Create' 'flight' %}">
+        <button>CREATE</button>
+    </a>
+    <ul class="item-list">
+        {% for item in items %}
+            <li>
+                <img src="{% static 'airways/bombai.jpg' %}" alt="zdjecie">
+                <div class="item-info">
+                    <p class="item-header">{{ item.departure_airport.name }} -> {{ item.arrival_airport.name }}</p>
+                    <p class="flight-time">Data: {{ item.departure_time }}</p>
+                    <p class="flight-price">{{ item.base_price|floatformat:2 }}zł</p>
+                    <p class="flight-pilot">Pilot: {{ item.pilot }}</p>
+                    <p class="flight-plane">Samolot: {{ item.plane.name }} nr. {{ item.plane.id }}</p>
+                    <a href="{% url 'airways:Delete' 'flight' item.id %}">
+                        <button>Usuń</button>
+                    </a>
+                    <a href="{% url 'airways:Update' 'flight' item.id %}">
+                        <button>Edytuj</button>
+                    </a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

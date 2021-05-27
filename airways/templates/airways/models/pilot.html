@@ -1,0 +1,25 @@
+{% extends "airways/base.html" %}
+{% load static %}
+
+{% block content %}
+    <a class="create-button" href="{% url 'airways:Create' 'pilot' %}">
+        <button>CREATE</button>
+    </a>
+    <ul class="item-list">
+        {% for item in items %}
+            <li>
+                <img src="{% static 'airways/bombai.jpg' %}" alt="zdjecie">
+                <div class="item-info">
+                    <p class="item-header">{{ item.firstname }} {{ item.surname }}</p>
+                    <p>{{ item.address }}, {{ item.city }}</p>
+                    <a href="{% url 'airways:Delete' 'pilot' item.id %}">
+                        <button>Usuń</button>
+                    </a>
+                    <a href="{% url 'airways:Update' 'pilot' item.id %}">
+                        <button>Edytuj</button>
+                    </a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

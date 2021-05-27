@@ -1,0 +1,15 @@
+{% extends "airways/base.html" %}
+{% load static %}
+{% block title %}Strona główna{% endblock %}
+
+{% block content %}
+    {% block item %}
+        <ul class="item-list">
+            {% for offer in offers %}
+                <li> {% block item %} {% endblock %}
+
+                </li>
+            {% endfor %}
+        </ul>
+    {% endblock %}
+{% endblock %}
