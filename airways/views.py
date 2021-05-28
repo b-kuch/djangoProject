@@ -42,10 +42,9 @@ def update(request, cls, id):
 
 
 def delete(request, cls, id):
-
     item = get_object_or_404(models_dict[cls], pk=id)
     if request.method == "POST":
         item.delete()
-        return redirect('Read', cls)
+        return redirect('airways:Read', cls)
     return render(request, 'airways/form_delete.html', {cls+'_id': item})
 
